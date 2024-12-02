@@ -1,4 +1,6 @@
 ﻿
+// Run with `dotnet run input.txt`.
+
 open System
 
 [<EntryPoint>]

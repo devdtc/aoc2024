@@ -39,5 +39,4 @@ let main argv =
     |> Seq.sum
   printfn "part2: %d\n" part2
 
-
   0  // exit success

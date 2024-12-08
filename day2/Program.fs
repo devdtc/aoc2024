@@ -61,5 +61,4 @@ let main argv =
     |> List.filter id |> List.length
   printfn "part2: %d\n" part2
 
-
   0  // exit success

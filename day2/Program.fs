@@ -35,7 +35,7 @@ let isSafe =
 
 [<EntryPoint>]
 let main argv =
-  // Read the input into a list of lists.
+  // Read the input into a list of reports (list of int).
   let input =
     System.IO.File.ReadLines(argv.[0])
     |> List.ofSeq

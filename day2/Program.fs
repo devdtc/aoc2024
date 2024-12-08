@@ -3,18 +3,22 @@
 
 open System
 
+// Define a type that's either Inc, Dec or Same
 type Dir = Inc | Dec | Same
 
 let isSafe =
+  // Converts two consecutive numbers into a Dir.
   let getDir x y =
     if y > x then Inc else
     if x > y then Dec else
     Same
 
+  // Do two Dirs match. Same matches with any direction.
   let dirsMatch d1 d2 = d1 = Same || d2 = Same || d1 = d2
 
   let rec go (prevDir : Dir) (xs : list<int>) : bool =
     match xs with
+    // For a list containing at least two numbers, check if they're safe and repeat for the rest of the list.
     | x :: y :: rest -> (
       let diff = Math.Abs(x - y)
       let dir = getDir x y
@@ -22,8 +26,10 @@ let isSafe =
       diff >= 1 && diff <= 3 &&
       dirsMatch prevDir dir &&
       go dir (y :: rest))
+    // Otherwise, there are 1 or fewer numbers, which is trivially safe.
     | _ -> true
 
+  // A lambda that calls the main body (go).
   fun xs -> go Same xs
 
 

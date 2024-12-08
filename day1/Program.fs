@@ -23,9 +23,7 @@ let main argv =
     Seq.zip (Seq.sort left) (Seq.sort right)
     |> Seq.map (fun (l, r) -> Math.Abs(l - r))
     |> Seq.sum
-
   printfn "part1: %d\n" part1
-
 
   // Build a map of key to number of times it occurs in the second list.
   let cntMap =
@@ -39,9 +37,7 @@ let main argv =
     left
     |> Seq.map (fun k -> k * (Option.defaultValue 0 (Map.tryFind k cntMap)))
     |> Seq.sum
-
   printfn "part2: %d\n" part2
 
 
   0  // exit success
-

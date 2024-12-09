@@ -71,7 +71,7 @@ let main argv =
     |> List.ofSeq |> List.partition (isValidReport invalidSuccessors)
 
   // To get the middle element, we drop half the report then take the next element. Then we sum them all
-  let sumMiddles = List.map (fun xs -> List.skip ((List.length xs) / 2) xs |> List.head) >> List.sum
+  let sumMiddles: list<list<int>> -> int = List.map (fun xs -> List.skip ((List.length xs) / 2) xs |> List.head) >> List.sum
 
   let part1 = validReports |> sumMiddles
   printfn "part1: %d\n" part1

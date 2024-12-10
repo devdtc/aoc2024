@@ -23,11 +23,7 @@ let advance (x, y) dir =
   | Right -> (x+1, y)
 
 // Given bounds, a set of blocks/obstacles, position, direction and path up to this point, return the remaining path and whether it's infinite or not.
-let rec walk
-    (bounds: Pos) (blocks: Set<Pos>)
-    (pos: Pos) (dir: Dir)
-    (path: Set<Pos * Dir>)
-    : PathType * Set<Pos * Dir> =
+let rec walk (bounds: Pos) (blocks: Set<Pos>) (pos: Pos) (dir: Dir) (path: Set<Pos * Dir>) : PathType * Set<Pos * Dir> =
   if Set.contains (pos, dir) path then
     // If we've already seen this position and direction, then the path is infinite.
     (Infinite, path)

@@ -30,8 +30,7 @@ let countStrAtPoint =
   fun mat i j str ->
     // Count the number of directions that spell out str.
     dirs
-    |> List.map (fun (di, dj) -> matchesCharSeq mat i j di dj str)
-    |> List.filter id
+    |> List.filter (fun (di, dj) -> matchesCharSeq mat i j di dj str)
     |> List.length
 
 

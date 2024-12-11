@@ -23,7 +23,7 @@ let advance (x, y) dir =
   | Right -> (x+1, y)
 
 // Given bounds, a set of blocks/obstacles, position, direction and path up to this point, return the remaining path and whether it's infinite or not.
-let rec walk (bounds: Pos) (blocks: Set<Pos>) (pos: Pos) (dir: Dir) (path: Set<Pos * Dir>) : PathType * Set<Pos * Dir> =
+let rec walk (bounds: Pos) (blocks: Set<Pos>) (pos: Pos) (dir: Dir) (path: Set<Pos * Dir>): PathType * Set<Pos * Dir> =
   if Set.contains (pos, dir) path then
     // If we've already seen this position and direction, then the path is infinite.
     (Infinite, path)
@@ -81,12 +81,12 @@ let main argv =
   let part2 =
     initPath
     |> Set.map (function (pos, _) -> pos)  // Map to pos within the Set type to get all unique positions since blocks don't have a direction
-    |> Seq.map (fun pos ->  // Now count the number of blocks along that path that are infinite. We convert to Seq because we don't want to deduplicate the result (a bool).
+    |> Seq.filter (fun pos ->  // Now count the number of blocks along that path that are infinite. We convert to Seq because we don't want to deduplicate the result (a bool).
       if pos = startPos then
         false
       else
         Infinite = fst (walk bounds (Set.add pos blocks) startPos startDir Set.empty))
-    |> Seq.filter id |> Seq.length  // Count the infinite paths.
+    |> Seq.length  // Count the infinite paths.
   printfn "part2: %d\n" part2
 
   0  // exit success

@@ -45,7 +45,7 @@ let main argv =
       |> List.map int)
 
   // Apply the isSafe function to each report, filter it to just the ones that were true, then count.
-  let part1 = List.map isSafe input |> List.filter id |> List.length
+  let part1 = List.filter isSafe input |> List.length
   printfn "part1: %d\n" part1
 
   // For each report generate every variation of the report with 1 item removed, check if any are safe, then count.
